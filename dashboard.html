@@ -87,7 +87,7 @@
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/components/Post.js"></script>
+    <script src="js/components/post.js"></script>
     <script>
       (async () => {
         const user = localStorage.getItem("user");
@@ -134,7 +134,6 @@
         );
 
         const posts = await res.json();
-        console.log(posts);
 
         let postsAux = "";
 
