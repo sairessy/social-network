@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="assets/img/logo1.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="assets/img/20220730_144610.png"
+      type="image/x-icon"
+    />
     <title>Dashboard</title>
     <link rel="stylesheet" href="libraries/line-awesome.min.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -41,6 +45,17 @@
       <section>
         <form id="form-post">
           <div class="wrap-textarea">
+            <div id="form-post-header">
+              <div>
+                <div class="avatar">
+                  <img src="assets/img/user-alt-solid.svg" alt="user-image" />
+                </div>
+              </div>
+              <div>
+                <h4>Cassamo Pinto</h4>
+              </div>
+            </div>
+
             <textarea
               id="post-text"
               rows="10"
@@ -48,6 +63,21 @@
               placeholder="Em que estás a pensar?"
             ></textarea>
             <button>Publicar</button>
+            <div class="form-post-media-buttons">
+              <img
+                width="20"
+                height="20"
+                src="assets/img/image.svg"
+                alt="image"
+              />
+              <img width="20" height="20" src="assets/img/gif.svg" alt="gif" />
+              <img
+                width="20"
+                height="20"
+                src="assets/img/video.svg"
+                alt="video"
+              />
+            </div>
           </div>
         </form>
         <hr />
@@ -57,7 +87,7 @@
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/components/post.js"></script>
+    <script src="js/components/Post.js"></script>
     <script>
       (async () => {
         const user = localStorage.getItem("user");
@@ -104,6 +134,7 @@
         );
 
         const posts = await res.json();
+        console.log(posts);
 
         let postsAux = "";
 

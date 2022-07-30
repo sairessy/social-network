@@ -9,7 +9,8 @@ header {
   align-items: center;
   padding: 10px;
   position: sticky;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: var(--primary-color);
+  /* background-color: rgba(0, 0, 0, .8); */
   top: 0;
   z-index: 2;
   box-shadow: 0 2px 6px #aaa;
@@ -52,21 +53,22 @@ section {
 section textarea {
   width: 100%;
   border-radius: 5px;
-  height: 100px;
   border: 1px solid #eee;
   font-size: 16px;
+  background-color: #eee;
 }
 .wrap-textarea {
   position: relative;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .wrap-textarea button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 20px;
-  border-radius: 25px;
-  padding: 5px 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  float: right;
+  padding: 10px;
   outline: none;
   border: none;
 }
@@ -96,20 +98,57 @@ section textarea {
 
 /* POSTS */
 
+#form-post-header {
+  display: flex;
+  align-items: center;
+}
+
+#form-post-header div:nth-child(1) {
+  margin-right: 20px;
+}
+
 .post {
   border: 1px solid var(--grey-color);
-  padding: 20px;
   margin: 20px auto;
   border-radius: 10px;
   background-color: var(--light-color);
 }
 
+.post-header {
+  border-bottom: 1px solid #ddd;
+  padding: 0 20px;
+}
+
 .post-body {
   height: 170px;
+  padding: 20px;
+}
+
+.post-footer {
+  padding: 10px;
+  background-color: #f9f9f9;
 }
 
 .post-footer span {
   margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100px;
+}
+
+.btn-like {
+  background-color: #ff000071;
+}
+
+.btn-comment {
+  background-color: rgba(255, 255, 0, 0.384);
+}
+
+.btn-share {
+  background-color: rgba(30, 143, 255, 0.384);
 }
 
 #btn-logout {
@@ -124,8 +163,13 @@ section textarea {
   width: fit-content;
 }
 
+
+.form-post-media-buttons img {
+  cursor: pointer;
+}
+
 @media (max-width: 414px) {
   section {
-    width: 90%;
+    width: 95%;
   }
 }

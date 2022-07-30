@@ -45,7 +45,7 @@ form button i {
 
 @media (max-width: 414px) {
   form {
-    width: auto;
+    width: 90%;
     border: none;
   }
 }

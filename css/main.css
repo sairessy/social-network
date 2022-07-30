@@ -68,3 +68,7 @@ h2 {
   width: 100px;
   height: 100px;
 }
+
+form h2 {
+  color: #fff;
+}
