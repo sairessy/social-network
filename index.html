@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="logo-wrap">
+      <img src="assets/img/logo1.png" width="60" height="60" alt="logo" />
+      <h1>Socializer</h1>
+    </div>
+    <form id="form-login">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" autofocus />
+      <label for="pass">Senha</label>
+      <input type="password" name="pass" id="pass" />
+      <input type="submit" value="Entrar" />
+      <p class="msg-error">Email ou senha inválida</p>
+      <p class="links">
+        <a href="#">Esqueci a senha</a> |
+        <a href="sign-up.html">Criar nova conta</a>
+      </p>
+    </form>
+
+    <script src="js/config.js"></script>
+    <script>
+      (async () => {
+        const user = localStorage.getItem("user");
+        if (user !== null) {
+          window.location.href = "dashboard.html";
+        }
+      })();
+
+      document.getElementById("form-login").onsubmit = async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const pass = document.getElementById("pass").value;
+        const data = { email, pass };
+
+        try {
+          const res = await fetch(`${config.apiUrl}/w/user/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          const json = await res.json();
+          if (json === null) {
+            document.querySelector(".msg-error").style.display = "block";
+            document.querySelector(".msg-error").innerText =
+              "Email ou senha inválida!";
+            setTimeout(() => {
+              document.querySelector(".msg-error").style.display = "none";
+            }, 3000);
+          } else {
+            localStorage.setItem("user", json._id);
+            window.location.href = "dashboard.html";
+          }
+          console.log(json);
+        } catch (error) {
+          console.error({ error });
+        }
+      };
+    </script>
+  </body>
+</html>

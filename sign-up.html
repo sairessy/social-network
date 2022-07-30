@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/sign-up.css" />
+  </head>
+  <body>
+    <div class="logo-wrap">
+      <img src="assets/img/logo1.png" width="60" height="60" alt="logo" />
+      <h1>Socializer</h1>
+    </div>
+    <form id="form-sign-up">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" autofocus required />
+      <label for="pass">Senha</label>
+      <input type="password" name="pass" id="pass" required />
+      <label for="c-pass">Confirmar senha</label>
+      <input type="password" name="c-pass" id="c-pass" required />
+      <input type="submit" value="Criar" />
+      <p class="msg-error"></p>
+      <p class="links">
+        <a href="#">Esqueci a senha</a> |
+        <a href="index.html">Já tenho uma conta</a>
+      </p>
+    </form>
+
+    <script src="js/config.js"></script>
+    <script>
+      (async () => {
+        const user = localStorage.getItem("user");
+        if (user !== null) {
+          window.location.href = "dashboard.html";
+        }
+      })();
+
+      document
+        .getElementById("form-sign-up")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const pass = document.getElementById("pass").value;
+          const cPass = document.getElementById("c-pass").value;
+
+          if (pass !== cPass) {
+            document.querySelector(".msg-error").style.display = "block";
+            document.querySelector(".msg-error").innerText =
+              "As senhas não coincidem";
+            setTimeout(() => {
+              document.querySelector(".msg-error").style.display = "none";
+            }, 3000);
+            return;
+          }
+
+          const data = { email, pass };
+
+          try {
+            const res = await fetch(`${config.apiUrl}/w/user/create`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (res.status === 200) {
+              window.location.href = "index.html";
+            } else {
+              document.querySelector(".msg-error").style.display = "block";
+              document.querySelector(".msg-error").innerText =
+                "O email já foi usado!";
+              setTimeout(() => {
+                document.querySelector(".msg-error").style.display = "none";
+              }, 3000);
+            }
+          } catch (error) {
+            console.log({ error });
+          }
+        });
+    </script>
+  </body>
+</html>

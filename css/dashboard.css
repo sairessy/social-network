@@ -1,0 +1,129 @@
+header {
+  height: 70px;
+  display: flex;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--grey-color);
+  position: sticky;
+  background-color: var(--light-color);
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 2px 6px #aaa;
+}
+
+header > div {
+  flex: 1;
+}
+
+header .hc input {
+  width: 100%;
+  padding-left: 40px;
+  background: url(../assets/img/search.svg) no-repeat 10px center/20px;
+}
+
+header .hr {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header .hr > div {
+  margin-left: 20px;
+}
+
+.avatar {
+  background-color: #eee;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+section {
+ width: 65%;
+ margin: auto; 
+ padding: 10px;
+ min-height: 100vh;
+}
+
+section textarea {
+  width: 100%;
+  border-radius: 5px;
+  height: 100px;
+  border: 1px solid #eee;
+  font-size: 16px;
+}
+.wrap-textarea {
+  position: relative;
+}
+
+.wrap-textarea button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  border-radius: 25px;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+}
+
+/* Badge */
+.badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.badge-num {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--color-danger);
+  color: var(--light-color);
+  border-radius: 100%;
+  padding: 2px;
+  font-size: 14px;
+}
+
+/* POSTS */
+
+.post {
+  border: 1px solid var(--grey-color);
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: var(--light-color);
+}
+
+.post-body {
+  height: 170px;
+}
+
+.post-footer span {
+  margin-right: 10px;
+}
+
+#btn-logout {
+  cursor: pointer;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  margin: unset;
+  width: fit-content;
+}
+
+@media (max-width: 414px) {
+  section {
+    width: 90%;
+  }
+}

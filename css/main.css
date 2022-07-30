@@ -1,0 +1,63 @@
+:root {
+  --primary-color: indigo;
+  --light-color: #fff; 
+  --grey-color: #ddd;
+  --color-danger: #ff0000;
+  --light-grey: #fcfcfc
+}
+
+@font-face {
+  font-family: 'rbt';
+  src: url('../assets/fonts/RobotoCondensed-Regular.ttf');
+}
+
+a {
+  color: var(--primary-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+input, textarea {
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--grey-color);
+  outline-color: var(--primary-color);
+}
+
+input[type="submit"], button {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  cursor: pointer;
+}
+
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.msg-error {
+  color: var(--color-danger);
+  text-align: center;
+  display: none;
+}
+
+.logo-wrap h1 {
+  font-family: 'rbt';
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: fit-content;
+}
+
+.logo-wrap img {
+  margin-right: 20px;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+}

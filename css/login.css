@@ -1,0 +1,39 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 380px;
+  min-height: 420px;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 30px;
+}
+
+form input {
+  margin-bottom: 20px;
+}
+
+form label {
+  margin-bottom: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+.links a {
+  margin: auto 10px;
+}
+
+@media (max-width: 414px) {
+  form {
+    width: auto;
+    border: none;
+  }
+}

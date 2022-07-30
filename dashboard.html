@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="libraries/line-awesome.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <div class="hl">
+        <div class="logo-wrap">
+          <img src="assets/img/logo1.png" width="60" height="60" alt="logo" />
+          <h1>Socializer</h1>
+        </div>
+      </div>
+      <!-- <div class="hc">
+        <input type="search" placeholder="Pesquisar" />
+      </div> -->
+      <div class="hr">
+        <span id="btn-logout">Sair</span>
+        <div class="badge">
+          <div class="badge-num">99</div>
+          <i class="la la-lg la-bell"></i>
+        </div>
+        <div class="avatar">
+          <img src="assets/img/user-alt-solid.svg" alt="user-image" />
+        </div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <form id="form-post">
+          <div class="wrap-textarea">
+            <textarea
+              id="post-text"
+              rows="10"
+              autofocus
+              placeholder="Em que estás a pensar?"
+            ></textarea>
+            <button>Publicar</button>
+          </div>
+        </form>
+        <hr />
+        <div id="posts"></div>
+      </section>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components/post.js"></script>
+    <script>
+      (async () => {
+        const user = localStorage.getItem("user");
+        if (user === null) {
+          window.location.href = "index.html";
+        }
+        getPosts();
+      })();
+
+      document.getElementById("btn-logout").onclick = () => {
+        localStorage.removeItem("user");
+        window.location.href = "index.html";
+      };
+
+      document.getElementById("form-post").onsubmit = async (e) => {
+        e.preventDefault();
+        const text = document.getElementById("post-text").value;
+
+        const data = {
+          user: localStorage.getItem("user"),
+          text,
+        };
+
+        try {
+          await fetch(`${config.apiUrl}/w/post/create`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          alert("Post adicionado");
+          getPosts();
+          document.getElementById("post-text").value = "";
+        } catch (error) {
+          console.error({ error });
+        }
+      };
+
+      async function getPosts() {
+        const res = await fetch(
+          `${config.apiUrl}/w/posts/user/${localStorage.getItem("user")}`
+        );
+
+        const posts = await res.json();
+
+        let postsAux = "";
+
+        if (posts.length > 0) {
+          for (post of posts) {
+            postsAux += Post(post);
+          }
+        }
+        document.getElementById("posts").innerHTML = postsAux;
+      }
+    </script>
+  </body>
+</html>
