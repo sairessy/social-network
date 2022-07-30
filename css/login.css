@@ -1,3 +1,7 @@
+body {
+  background-image: linear-gradient(45deg,cyan,yellow);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -6,8 +10,11 @@ form {
   min-height: 420px;
   margin: auto;
   border: 1px solid #ddd;
-  border-radius: 7px;
+  border-radius: 15px;
   padding: 30px;
+  background-color: rgba(0, 0, 0, .8);
+  min-height: 80vh;
+  margin-bottom: 50px;
 }
 
 form input {
@@ -16,6 +23,7 @@ form input {
 
 form label {
   margin-bottom: 5px;
+  color: #fff;
 }
 
 h1 {
@@ -29,6 +37,10 @@ h1 {
 
 .links a {
   margin: auto 10px;
+}
+
+form button i {
+  margin-right: 10px;
 }
 
 @media (max-width: 414px) {

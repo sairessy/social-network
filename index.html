@@ -4,21 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/img/logo1.png" type="image/x-icon" />
     <title>Login</title>
+    <link rel="stylesheet" href="libraries/line-awesome.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <div class="logo-wrap">
-      <img src="assets/img/logo1.png" width="60" height="60" alt="logo" />
-      <h1>Socializer</h1>
+      <img
+        src="assets/img/20220730_144610.png"
+        width="60"
+        height="60"
+        alt="logo"
+      />
+      <h1>Weemotion</h1>
     </div>
     <form id="form-login">
+      <h2>LOGIN</h2>
       <label for="email">Email</label>
       <input type="email" name="email" id="email" autofocus />
       <label for="pass">Senha</label>
       <input type="password" name="pass" id="pass" />
-      <input type="submit" value="Entrar" />
+      <button>
+        <!-- <i id="spiner" class="la la-circle-notch"></i> -->
+        <span>Entrar</span>
+      </button>
       <p class="msg-error">Email ou senha inválida</p>
       <p class="links">
         <a href="#">Esqueci a senha</a> |
@@ -37,6 +48,8 @@
 
       document.getElementById("form-login").onsubmit = async (e) => {
         e.preventDefault();
+
+        // document.getElementById("spiner").display = "inline-block";
 
         const email = document.getElementById("email").value;
         const pass = document.getElementById("pass").value;
@@ -63,8 +76,9 @@
             localStorage.setItem("user", json._id);
             window.location.href = "dashboard.html";
           }
-          console.log(json);
+          // document.getElementById("spiner").display = "none";
         } catch (error) {
+          // document.getElementById("spiner").display = "none";
           console.error({ error });
         }
       };

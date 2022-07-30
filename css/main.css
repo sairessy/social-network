@@ -1,5 +1,5 @@
 :root {
-  --primary-color: indigo;
+  --primary-color: dodgerblue;
   --light-color: #fff; 
   --grey-color: #ddd;
   --color-danger: #ff0000;
@@ -12,6 +12,7 @@
 }
 
 a {
+  text-decoration: none;
   color: var(--primary-color);
 }
 
@@ -20,7 +21,7 @@ body {
   padding: 0;
 }
 
-input, textarea {
+input, textarea, button {
   padding: 15px;
   border-radius: 5px;
   border: 1px solid var(--grey-color);
@@ -46,6 +47,12 @@ input[type="submit"], button {
 
 .logo-wrap h1 {
   font-family: 'rbt';
+  color: #fff;
+  display: none;
+}
+
+h2 {
+  text-align: center;
 }
 
 .logo-wrap {
@@ -58,6 +65,6 @@ input[type="submit"], button {
 .logo-wrap img {
   margin-right: 20px;
   border-radius: 100%;
-  width: 35px;
-  height: 35px;
+  width: 100px;
+  height: 100px;
 }
